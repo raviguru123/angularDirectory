@@ -6,6 +6,9 @@ function DirectiveController($scope){
 
 	$scope.pageName="index.html";
 	$scope.outervalue="outervalueSuccess";
+	$scope.li1="li1";
+	$scope.li2="li2";
+	$scope.li3="li3";
 	$scope.check=function(obj){
 		obj=JSON.parse(obj);
 		console.log("before iterating=",obj,obj.length,length);
@@ -23,23 +26,20 @@ app.directive('cardLen', function () {
   return {
     restrict: 'E',
     scope: true,
-   /* template:['<div style="width:100px;height: 100px;background-color: green">',
-'<label>Directive</label>',
-	'<ul>',
-		'<li>hello</li>',
-		'<li ng-click="check()">second</li>',
-		'<li>second</li>',
-	'</ul>',
-'</div'].join(''),*/
-	scope:true,
+ 	scope:true,
 	templateUrl:'./directory/dir1.html',
     link: function (scope,elements,attr,controller,transclude) {
      console.log("attr obj=",attr.data);
-      scope.pageName = "innner.html";
+      //scope.pageName = "innner.html";
+      scope.outervalue="outer value change from directory";
       scope.dirval={name:"directory value"};
       scope.dataValue=attr.data;
  
-      
+      scope.check1=function(dataValue,event){
+      	alert("directory function called");
+      	  //$(event.target).addClass('active');
+      	scope.check(dataValue);
+      }
       //scope.innerModel = {innerVal: "innerVal"};
     }
   }

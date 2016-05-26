@@ -2,17 +2,22 @@
 <!DOCTYPE html>
 <html ng-app="directive.module">
 <head>
-<meta charset="utf-8">
+	<meta charset="utf-8">
 	<title></title>
 	<script src="lib/angular.min.js"></script>
 	<script src="js/index.js"></script>
 </head>
 <body style="margin: 40px" ng-controller="DirectiveController">
-
-<label>Directive Start From here+{{pageName}}</label>
-<card-len data={{obj}}></card-len>
-<br/>
-<label>second directive</label>
-<card-len data={{obj}}></card-len>
+<input type="text" name="" ng-model="pageName">
+	<ul>
+		<li>{{li1}}</li>
+		<li>{{li2}}</li>
+		<li>{{li3}}</li>
+	</ul>
+	<label>Directive Start From here+{{pageName}}</label>
+	<card-len data={{obj}}></card-len>
+	<br/>
+	<label>second directive</label>
+	<card-len data={{obj}}></card-len>
 </body>
 </html>
