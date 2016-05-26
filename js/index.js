@@ -22,9 +22,6 @@ function DirectiveController($scope){
 
 
 }
-
-
-
 app.directive('cardLen', function () {
   return {
     restrict: 'E',
