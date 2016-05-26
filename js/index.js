@@ -1,4 +1,4 @@
-var app=angular.module("directive.module",[]);
+var app=angular.module("directive.module",['ngMaterial']);
 
 app.controller("DirectiveController",DirectiveController);
 
@@ -9,6 +9,7 @@ function DirectiveController($scope){
 	$scope.li1="li1";
 	$scope.li2="li2";
 	$scope.li3="li3";
+	$scope.date="";
 	$scope.check=function(obj){
 		obj=JSON.parse(obj);
 		console.log("before iterating=",obj,obj.length,length);
@@ -18,6 +19,8 @@ function DirectiveController($scope){
 		}
 	}
 	$scope.obj=[{name:"ravi"},{name:"someone"}]
+
+
 }
 
 

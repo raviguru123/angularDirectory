@@ -4,11 +4,23 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/angular-material.min.css">
+	<!-- Angular Material requires Angular.js Libraries -->
 	<script src="lib/angular.min.js"></script>
+	<script src="lib/angular-animate.min.js"></script>
+	<script src="lib/angular-aria.min.js"></script>
+	<script src="lib/angular-messages.min.js"></script>
+	<!-- Angular Material Library -->
+	<script src="lib/angular-material.min.js"></script>
 	<script src="js/index.js"></script>
 </head>
-<body style="margin: 40px" ng-controller="DirectiveController">
-<input type="text" name="" ng-model="pageName">
+<body style="margin: 40px;margin-top:100px" ng-controller="DirectiveController">
+	<md-datepicker ng-model="date" md-placeholder="Start Date"></md-datepicker>
+	<br/>
+	<md-datepicker md-min-date="date" ng-model="maxDate" md-placeholder="End Date"></md-datepicker>
+	<br/>
+	<br/>
+	<input type="text" name="" ng-model="pageName">
 	<ul>
 		<li>{{li1}}</li>
 		<li>{{li2}}</li>
