@@ -6,9 +6,15 @@ function DirectiveController($scope){
 
 	$scope.pageName="index.html";
 	$scope.outervalue="outervalueSuccess";
-	$scope.check=function(){
-		alert("check function call");
+	$scope.check=function(obj){
+		obj=JSON.parse(obj);
+		console.log("before iterating=",obj,obj.length,length);
+		for(var i=0;i<obj.length;i++)
+		{
+			console.log(obj[i].name);
+		}
 	}
+	$scope.obj=[{name:"ravi"},{name:"someone"}]
 }
 
 
@@ -25,10 +31,15 @@ app.directive('cardLen', function () {
 		'<li>second</li>',
 	'</ul>',
 '</div'].join(''),*/
+	scope:true,
 	templateUrl:'./directory/dir1.html',
     link: function (scope,elements,attr,controller,transclude) {
-      //scope.outerVal = "inner";
-      //scope.model.innerVal = "inner2";
+     console.log("attr obj=",attr.data);
+      scope.pageName = "innner.html";
+      scope.dirval={name:"directory value"};
+      scope.dataValue=attr.data;
+ 
+      
       //scope.innerModel = {innerVal: "innerVal"};
     }
   }
