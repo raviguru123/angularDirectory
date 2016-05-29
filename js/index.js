@@ -9,12 +9,6 @@ function DirectiveController($scope){
 	$scope.date="";
 	$scope.check=function(obj){
 		obj=JSON.parse(obj);
-		console.log("object=",obj);
-        console.log("hotfix");
-		console.log("another hotfix");
-		console.log("test child");
-		console.log("Create branch testing");
-		console.log("before iterating=",obj,obj.length,length);
 		console.log("before iterating=",obj,obj.length,length);
 		for(var i=0;i<obj.length;i++)
 		{
