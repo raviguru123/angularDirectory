@@ -12,13 +12,6 @@ function DirectiveController($scope){
 		console.log("object=",obj);
 		console.log("hotfix");
 		console.log("another hotfix");
-		console.log("another test added");
-		console.log("another test added beacuse merge tool experiment");
-		console.log("another test added beacuse merge tool experiment");
-		console.log("another test added beacuse merge tool experiment");
-		console.log("another test added because merge tool experiment");
-		console.log("another test added because merge tool experiment");
-		console.log("another test added because merge tool experiment");
 		console.log("before iterating=",obj,obj.length,length);
 		console.log("before iterating=",obj,obj.length,length);
 		for(var i=0;i<obj.length;i++)
