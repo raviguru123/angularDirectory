@@ -10,7 +10,7 @@ function DirectiveController($scope){
 	$scope.check=function(obj){
 		obj=JSON.parse(obj);
 		console.log("object=",obj);
-		console.log("hotfix");
+        console.log("hotfix");
 		console.log("another hotfix");
 		console.log("test child");
 		console.log("Create branch testing");
