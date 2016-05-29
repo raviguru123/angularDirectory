@@ -13,6 +13,7 @@ function DirectiveController($scope){
 	$scope.check=function(obj){
 		obj=JSON.parse(obj);
 		console.log("before iterating=",obj,obj.length,length);
+		console.log("before iterating=",obj,obj.length,length);
 		for(var i=0;i<obj.length;i++)
 		{
 			console.log(obj[i].name);
