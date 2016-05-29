@@ -12,6 +12,7 @@ function DirectiveController($scope){
 	$scope.date="";
 	$scope.check=function(obj){
 		obj=JSON.parse(obj);
+		console.log("object=",obj);
 		console.log("before iterating=",obj,obj.length,length);
 		for(var i=0;i<obj.length;i++)
 		{
