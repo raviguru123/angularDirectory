@@ -15,6 +15,7 @@ function DirectiveController($scope){
 		console.log("object=",obj);
 		console.log("master");
 		console.log("before iterating=",obj,obj.length,length);
+		console.log("before iterating=",obj,obj.length,length);
 		for(var i=0;i<obj.length;i++)
 		{
 			console.log(obj[i].name);
