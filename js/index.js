@@ -22,25 +22,28 @@ function DirectiveController($scope){
 
 
 }
+
+
+
 app.directive('cardLen', function () {
-  return {
-    restrict: 'E',
-    scope: true,
- 	scope:true,
-	templateUrl:'./directory/dir1.html',
-    link: function (scope,elements,attr,controller,transclude) {
-     console.log("attr obj=",attr.data);
+	return {
+		restrict: 'E',
+		scope: true,
+		scope:true,
+		templateUrl:'./directory/dir1.html',
+		link: function (scope,elements,attr,controller,transclude) {
+			console.log("attr obj=",attr.data);
       //scope.pageName = "innner.html";
       scope.outervalue="outer value change from directory";
       scope.dirval={name:"directory value"};
       scope.dataValue=attr.data;
- 
+      
       scope.check1=function(dataValue,event){
       	alert("directory function called");
       	  //$(event.target).addClass('active');
-      	scope.check(dataValue);
-      }
+      	  scope.check(dataValue);
+      	}
       //scope.innerModel = {innerVal: "innerVal"};
-    }
   }
+}
 });
