@@ -12,6 +12,7 @@ function DirectiveController($scope){
 		console.log("object=",obj);
 		console.log("hotfix");
 		console.log("another hotfix");
+		console.log("master child");
 		console.log("before iterating=",obj,obj.length,length);
 		console.log("before iterating=",obj,obj.length,length);
 		for(var i=0;i<obj.length;i++)
