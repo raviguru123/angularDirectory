@@ -20,8 +20,6 @@ function DirectiveController($scope){
 		}
 	}
 	$scope.obj=[{name:"ravi"},{name:"someone"}]
-
-
 }
 
 
