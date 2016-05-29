@@ -14,6 +14,7 @@ function DirectiveController($scope){
 		obj=JSON.parse(obj);
 		console.log("object=",obj);
 		console.log("hotfix");
+		console.log("another test added");
 		console.log("before iterating=",obj,obj.length,length);
 		console.log("before iterating=",obj,obj.length,length);
 		for(var i=0;i<obj.length;i++)
