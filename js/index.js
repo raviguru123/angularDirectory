@@ -43,3 +43,4 @@ app.directive('cardLen', function () {
 });
 
 console.log("Home branch change");
+console.log("next home changes");
