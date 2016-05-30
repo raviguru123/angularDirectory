@@ -12,6 +12,7 @@ function DirectiveController($scope){
 		console.log("before iterating=",obj,obj.length,length);
 		console.log("changes in second branch");
 		console.log("change in first branch");
+		console.log("hit chnages from home directory");
 		for(var i=0;i<obj.length;i++)
 		{
 			console.log(obj[i].name);
