@@ -19,6 +19,7 @@ function DirectiveController($scope){
 	}
 	$scope.obj=[{name:"ravi"},{name:"someone"}]
 }
+console.log("Changes from Desktop Driectory");
 app.directive('cardLen', function () {
 	return {
 		restrict: 'E',
