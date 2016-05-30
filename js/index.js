@@ -17,9 +17,6 @@ function DirectiveController($scope){
 	}
 	$scope.obj=[{name:"ravi"},{name:"someone"}]
 }
-
-
-
 app.directive('cardLen', function () {
 	return {
 		restrict: 'E',
