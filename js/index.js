@@ -11,6 +11,7 @@ function DirectiveController($scope){
 		obj=JSON.parse(obj);
 		console.log("before iterating=",obj,obj.length,length);
 		console.log("changes in second branch");
+		console.log("change in first branch");
 		for(var i=0;i<obj.length;i++)
 		{
 			console.log(obj[i].name);
