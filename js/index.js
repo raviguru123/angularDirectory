@@ -40,3 +40,5 @@ app.directive('cardLen', function () {
 		}
 	}
 });
+
+console.log("Home branch change");
