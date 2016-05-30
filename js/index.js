@@ -10,6 +10,7 @@ function DirectiveController($scope){
 	$scope.check=function(obj){
 		obj=JSON.parse(obj);
 		console.log("before iterating=",obj,obj.length,length);
+		console.log("changes in second branch");
 		for(var i=0;i<obj.length;i++)
 		{
 			console.log(obj[i].name);
