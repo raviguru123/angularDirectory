@@ -2,7 +2,27 @@ console.log("desktop branch changes");
 console.log("Next desktop changes");
 var app=angular.module("directive.module",['ngMaterial']);
 app.controller("DirectiveController",DirectiveController);
-function DirectiveController($scope){
+function DirectiveController($scope,$mdToast){
+	$scope.showSimpleToast = function() {
+		debugger;
+		$scope.pos={
+			bottom: false,
+			top: true,
+			left: false,
+			right: true
+		}
+		$mdToast.show(
+			$mdToast.simple()
+			.textContent('Hello World!')
+			.position("left bottom")                      
+			.hideDelay(3000)
+			);
+	};
+	$scope.myDate = new Date();
+	$scope.minDate = new Date(
+	$scope.myDate.getFullYear()-10,
+	$scope.myDate.getMonth()-2,
+	$scope.myDate.getDate());
 	$scope.pageName="index.html";
 	$scope.outervalue="outervalueSuccess";
 	$scope.li1="li1";
@@ -10,6 +30,7 @@ function DirectiveController($scope){
 	$scope.li3="li3";
 	$scope.date="";
 	$scope.check=function(obj){
+		debugger;
 		obj=JSON.parse(obj);
 		console.log("before iterating=",obj,obj.length,length);
 		console.log("changes in second branch");
@@ -27,7 +48,6 @@ app.directive('cardLen', function () {
 	return {
 		restrict: 'E',
 		scope: true,
-		scope:true,
 		templateUrl:'./directory/dir1.html',
 		link: function (scope,elements,attr,controller,transclude) {
 			console.log("attr obj=",attr.data);
