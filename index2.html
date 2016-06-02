@@ -22,38 +22,25 @@
 		$(document).ready(function(){
 			SC.initialize({
 				client_id: '08ffe545ab9e0496a116d314ff0d9094',
-				redirect_uri: 'http://localhost:8887'
+				redirect_uri: 'http://localhost:8887/callback.html'
 			});
+			
+
 			$(".btnlogin").click(function(){
 				SC.connect().then(function(){
-					window.setTimeout(window.opener.SC.connectCallback, 1);
+					
 					return SC.put('/me/followings/183');
 				}).then(function(user){
 					
 					alert('You are now following ' + user.username);
 				}).catch(function(error){
-					alert('Error: ' + error.message);
+					console.log("error=",error);
 				});
 
 			})
 
 
-			$(".btninsta").click(function(){
-				debugger;
-				$.ajax({
-					type: "GET",
-					dataType: "jsonp",
-					cache: false,
-					url: "https://api.instagram.com/oauth/authorize/?client_id=fbc08677f1bb4075b4d4517c04a225b4&redirect_uri=localhost:8887&response_type=token",
-					success: function(data) {
-						console.log("instagram returned data=",data);
-					}
-				})
-
-			});
 		});
-
-
 
 
 
