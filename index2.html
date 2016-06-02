@@ -25,14 +25,41 @@
 				redirect_uri: 'http://localhost:8887'
 			});
 			$(".btnlogin").click(function(){
-				SC.connect().then(function() {
-					return SC.get('/me');
-				}).then(function(me) {
-					alert('Hello, ' + me.username);
+				SC.connect().then(function(){
+					window.setTimeout(window.opener.SC.connectCallback, 1);
+					return SC.put('/me/followings/183');
+				}).then(function(user){
+					
+					alert('You are now following ' + user.username);
+				}).catch(function(error){
+					alert('Error: ' + error.message);
 				});
+
 			})
 
-		})
+
+			$(".btninsta").click(function(){
+				debugger;
+				$.ajax({
+					type: "GET",
+					dataType: "jsonp",
+					cache: false,
+					url: "https://api.instagram.com/oauth/authorize/?client_id=fbc08677f1bb4075b4d4517c04a225b4&redirect_uri=localhost:8887&response_type=token",
+					success: function(data) {
+						console.log("instagram returned data=",data);
+					}
+				})
+
+			});
+		});
+
+
+
+
+
+
+
+
 // update user's profile description
 
 
@@ -40,9 +67,10 @@
 </head>
 <body style="padding-top: 100px">
 	<div ng-controller="MainCtrl">
-		<a target="_blank" href="https://api.instagram.com/oauth/authorize/?client_id=fbc08677f1bb4075b4d4517c04a225b4&redirect_uri=localhost:8887&response_type=token">Instagram login</a>
 
-		<input type="button" value="InstagramLogin" class="btn btn-info btnlogin" name="">
+		<a target="_blank" href="https://instagram.com/oauth/authorize/?client_id=	f762d3e06bf947aca874d08417259d1c&redirect_uri=http://localhost:8887&response_type=token">Instagram login</a>
+		<input type="button" value="Instagram login" class="btn btn-primary btninsta"/>
+		<input type="button" value="SoundCloudLogin" class="btn btn-info btnlogin" name="">
 	</div>
 </body>
 </html>
