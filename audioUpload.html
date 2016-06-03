@@ -50,7 +50,6 @@
                 });
             }
         }]);
-
         myApp.factory("uploadfile",function($http,$q){
 
             var obj={};
@@ -66,24 +65,16 @@
           }
           return obj;
       })
-
-
         myApp.controller('myCtrl', ['$scope','fileUpload','uploadfile', function($scope, fileUpload,uploadfile){
-
             $scope.uploadFile = function(){
                 var file = $scope.myFile;
                 console.log('file is ',file);
-                
                 //var uploadUrl = "/fileUpload";
                 uploadfile.uploadAudio(file,file.name);
                 //fileUpload.uploadFileToUrl(file, uploadUrl);
             };
-
         }]);
-
-
-
-    </script>
+</script>
 </head>
 <body style="padding-top: 100px">
     <div ng-controller = "myCtrl">
