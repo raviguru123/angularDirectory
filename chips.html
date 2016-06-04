@@ -54,6 +54,12 @@
 .chipsdemoContactChips .fixedRows {
   height: 250px;
   overflow: hidden; }
+
+
+
+  .md-chips .md-chip-input-container md-autocomplete input {
+    width: 400px;
+}
 	</style>
 </head>
 <body style="padding-top: 100px">
@@ -94,6 +100,18 @@
 
 
 <input type="button" value="Click-Me" ng-click="sendValue()">
+
+
+
+  <md-input-container flex-gt-md="30">
+        <label>Timepicker Only</label>
+        <input mdc-datetime-picker date="false" time="true" type="text" id="time" short-time="true"
+               placeholder="Time"
+               min-date="minDate"
+               format="hh:mm a"
+               ng-model="time">
+    </md-input-container>
+</div>
 </div>
 </body>
 </html>

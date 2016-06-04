@@ -1,25 +1,18 @@
-  var app=angular.module('contactChipsDemo', ['ngMaterial']);
+  var app=angular.module('contactChipsDemo', ['ngMaterial','ngMaterialDatePicker']);
   app.controller('myCtrl', ['$scope','autoComplete', function($scope,autoComplete){
-   
-$scope.myItems=["ravi","kumar","rana"];
+    $scope.myItems=["ravi","kumar","rana"];
+    $scope.content=[]; 
+    $scope.search=function(query){
+      return autoComplete.querySearch(query);
+    }
+    $scope.sendValue=function(){
+      console.log("Content array=",$scope.content);
+    }
 
-   $scope.content=[]; 
-   $scope.search=function(query){
-    return autoComplete.querySearch(query);
-  }
- 
-  $scope.sendValue=function(){
-    console.log("Content array=",$scope.content);
-  }
-
-   $scope.hello=function(param){
-    alert("hello",param);
-  }
-}]);
- 
-
-
-
+    $scope.hello=function(param){
+      alert("hello",param);
+    }
+  }]);
   app.factory("autoComplete",function($q){
     var obj={};
     obj.loadStates=function(){
