@@ -1,83 +1,57 @@
-  angular.module('contactChipsDemo', ['ngMaterial']).controller('ContactChipDemoCtrl', DemoCtrl);
-  function DemoCtrl ($q, $timeout) {
-    var self = this;
-    var pendingSearch, cancelSearch = angular.noop;
-    var cachedQuery, lastSearch;
-    self.allContacts = loadContacts();
-    self.contacts = [self.allContacts[0]];
-    self.asyncContacts = [];
-    self.filterSelected = true;
-    self.querySearch = querySearch;
-    self.delayedQuerySearch = delayedQuerySearch;
-    /**
-     * Search for contacts; use a random delay to simulate a remote call
-     */
-     function querySearch (criteria) {
-      cachedQuery = cachedQuery || criteria;
-      return cachedQuery ? self.allContacts.filter(createFilterFor(cachedQuery)) : [];
-    }
-    /**
-     * Async search for contacts
-     * Also debounce the queries; since the md-contact-chips does not support this
-     */
-     function delayedQuerySearch(criteria) {
-      cachedQuery = criteria;
-      if ( !pendingSearch || !debounceSearch() )  {
-        cancelSearch();
-        return pendingSearch = $q(function(resolve, reject) {
-          // Simulate async search... (after debouncing)
-          cancelSearch = reject;
-          $timeout(function() {
-            resolve( self.querySearch() );
-            refreshDebounce();
-          }, Math.random() * 500, true)
-        });
-      }
-      return pendingSearch;
-    }
-    function refreshDebounce() {
-      lastSearch = 0;
-      pendingSearch = null;
-      cancelSearch = angular.noop;
-    }
-    /**
-     * Debounce if querying faster than 300ms
-     */
-     function debounceSearch() {
-      var now = new Date().getMilliseconds();
-      lastSearch = lastSearch || now;
-      return ((now - lastSearch) < 300);
-    }
-    /**
-     * Create filter function for a query string
-     */
-     function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-      return function filterFn(contact) {
-        return (contact._lowername.indexOf(lowercaseQuery) != -1);;
-      };
-    }
-    function loadContacts() {
-      var contacts = [
-      'Marina Augustine',
-      'Oddr Sarno',
-      'Nick Giannopoulos',
-      'Narayana Garner',
-      'Anita Gros',
-      'Megan Smith',
-      'Tsvetko Metzger',
-      'Hector Simek',
-      'Some-guy withalongalastaname'
-      ];
-      return contacts.map(function (c, index) {
-        var cParts = c.split(' ');
-        var contact = {
-          name: c,
-          email: cParts[0][0].toLowerCase() + '.' + cParts[1].toLowerCase() + '@example.com',
-          image: 'http://lorempixel.com/50/50/people?' + index
-        };
-        contact._lowername = contact.name.toLowerCase();
-        return contact;
-      });
-    }
+  var app=angular.module('contactChipsDemo', ['ngMaterial']);
+  app.controller('myCtrl', ['$scope','autoComplete', function($scope,autoComplete){
+   
+$scope.myItems=["ravi","kumar","rana"];
+
+   $scope.content=[]; 
+   $scope.search=function(query){
+    return autoComplete.querySearch(query);
   }
+ 
+  $scope.sendValue=function(){
+    console.log("Content array=",$scope.content);
+  }
+
+   $scope.hello=function(param){
+    alert("hello",param);
+  }
+}]);
+ 
+
+
+
+  app.factory("autoComplete",function($q){
+    var obj={};
+    obj.loadStates=function(){
+      var allStates = 'Alabamaaaaaaaaaaa, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+      Florida, Georgia, aawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+      Maine, Maryland, aassachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+      Nebraska, Nevada, aew Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+      North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+      South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+      Wisconsin, Wyoming';
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state,
+          image:"http://lorempixel.com/50/50/people?2",
+          name:state.toUpperCase(),
+          email:"raviguruiitr@gmail.com"
+        };
+      });
+    };
+    obj.querySearch=function(query) {
+      debugger;
+      if(query==null||query=="")
+      {
+        return obj.loadStates();
+      }
+      var results = query ? obj.loadStates().filter(function(state){
+        var lowercaseQuery = angular.lowercase(query);
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      }) :  obj.loadStates();
+      return results;
+    };
+
+    return obj;
+  });
